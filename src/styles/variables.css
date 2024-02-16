@@ -1,0 +1,32 @@
+:root {
+  --global--color-sheme-red: #d90000;
+  --global--color-sheme-white: #fff;
+  --font-headings: Murecho;
+  --font-base: Roboto;
+  --global--font-primary: var(
+    --font-headings,
+    -apple-system,
+    BlinkMacSystemFont,
+    Murecho,
+    "Exo 2",
+    "Segoe UI",
+    Oxygen-Sans,
+    Ubuntu,
+    Cantarell,
+    "Helvetica Neue",
+    sans-serif
+  );
+  --global--font-secondary: var(
+    --font-base,
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    "Exo 2",
+    "Segoe UI",
+    Oxygen-Sans,
+    Ubuntu,
+    Cantarell,
+    "Helvetica Neue",
+    sans-serif
+  );
+}

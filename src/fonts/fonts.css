@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Murecho";
+  src: url("./Murecho.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./Roboto.ttf") format("truetype");
+}
