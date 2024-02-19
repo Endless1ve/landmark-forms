@@ -1,0 +1,18 @@
+@import url("./feedbackInputs/feedbackInputs.css");
+@import url("./feedbackAcceptance/feedbackAcceptance.css");
+@import url("./feedbackSubmit/feedbackSubmit.css");
+
+.feedbackContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px 0;
+}
+@media screen and (min-width: 980px) {
+  .feedbackContent {
+    flex-direction: row;
+    gap: 10px;
+    align-items: start;
+    align-self: center;
+  }
+}

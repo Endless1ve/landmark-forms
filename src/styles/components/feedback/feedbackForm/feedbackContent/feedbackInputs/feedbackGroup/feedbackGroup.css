@@ -1,0 +1,5 @@
+@import url("./feedbackInput/feedbackInput.css");
+
+.feedbackGroup {
+  min-width: 200px;
+}
