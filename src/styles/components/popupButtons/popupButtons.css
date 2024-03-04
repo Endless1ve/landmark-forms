@@ -1,1 +1,8 @@
 @import url("./openButton/openButton.css");
+
+.popupButtons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
