@@ -1,5 +1,5 @@
 export default function setFile() {
-  const fileInput = document.querySelector(".file");
+  const fileInput = document.querySelector(".fileInput");
   const fileLabel = document.querySelector(".fileLabel");
   const fileClearButton = document.querySelector(".fileButton");
   const files = event.target.files;
