@@ -1,0 +1,10 @@
+@import url("./fileButton/fileButton.css");
+
+.fileLabel {
+  border: 0.5px solid #c6c6c6;
+  padding: 5px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+}

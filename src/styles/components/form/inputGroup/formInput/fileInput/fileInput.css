@@ -1,0 +1,5 @@
+@import url("./fileLabel/fileLabel.css");
+
+.fileInput {
+  display: none;
+}

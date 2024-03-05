@@ -1,0 +1,7 @@
+.fileButton {
+  position: absolute;
+  right: 30px;
+  top: 7px;
+  z-index: 2;
+  cursor: pointer;
+}
