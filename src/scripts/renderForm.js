@@ -6,7 +6,7 @@ export default function renderForm(popupSlot, formName) {
   popupSlot.insertAdjacentHTML("beforeend", popupForms[formName]);
 
   const popupForm = document.querySelector(".popupForm");
-  const fileElem = popupForm.querySelector(".file");
+  const fileElem = popupForm.querySelector(".fileInput");
 
   popupForm.addEventListener("submit", sendToValidate);
   if (fileElem) {

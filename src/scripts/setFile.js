@@ -3,7 +3,7 @@ export default function setFile() {
   const fileLabel = document.querySelector(".fileLabel");
   const fileClearButton = document.querySelector(".fileButton");
   const files = event.target.files;
-
+  console;
   if (files.length > 0) {
     let fileName = event.target.files[0].name;
     let name = fileName.slice(0, -4);
