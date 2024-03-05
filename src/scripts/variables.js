@@ -62,7 +62,7 @@ const popupForms = {
         <div class="inputGroup">
           <image class="fileButton" src='${closePopupImage}'>
           <label class="fileLabel" for="file">Выберите файл...</label>
-          <input class="file" id="file" type="file" accept=".pdf">
+          <input class="fileInput" id="file" type="file" accept=".pdf">
         </div>
         <p class="formAcceptance popupAcceptance">
           Нажимая кнопку "Отправить", вы соглашаетесь с
