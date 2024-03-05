@@ -74,6 +74,16 @@ const popupForms = {
       </form>`,
 };
 
+const popupResultElement = `
+<div class="popup resultPopup">
+  <div class="popupContent">
+    <img src="${closePopupImage}" alt="" class="closePopup">
+    <h2 class="popupTitle"></h2>
+    <p class="popupText"></p>
+  </div>
+</div>
+`;
+
 export {
   body,
   forms,
@@ -82,4 +92,5 @@ export {
   validatePatterns,
   popupForms,
   preloader,
+  popupResultElement,
 };
