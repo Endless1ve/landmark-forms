@@ -9,6 +9,14 @@
   cursor: pointer;
   background-color: var(--global--color-sheme-red);
   color: var(--global--color-sheme-white);
+  border: 0.1px solid var(--global--color-sheme-red);
   max-width: 126px;
   min-width: 126px;
+}
+
+@media (hover: hover) {
+  .formSubmit:hover {
+    background-color: var(--global--color-sheme-white);
+    color: var(--global--color-sheme-red);
+  }
 }
