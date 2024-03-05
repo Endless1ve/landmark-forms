@@ -3,7 +3,6 @@ import { body, popupResultElement } from "./variables";
 
 export default function openResultPopup(result) {
   body.insertAdjacentHTML("beforeend", popupResultElement);
-  console.log(result);
   const popup = document.querySelector(".resultPopup");
   const popupTitle = popup.querySelector(".popupTitle");
   const popupText = popup.querySelector(".popupText");

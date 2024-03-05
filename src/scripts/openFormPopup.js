@@ -10,5 +10,5 @@ export default function openFormPopup(event) {
 
   renderForm(popupSlot, formName);
 
-  popup.addEventListener("click", closePopup);
+  popup.addEventListener("mousedown", closePopup);
 }
