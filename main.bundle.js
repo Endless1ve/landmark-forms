@@ -5604,6 +5604,8 @@ var es_function_name = __webpack_require__(1408);
 function closePopup(_ref) {
   var currentTarget = _ref.currentTarget,
     target = _ref.target;
+  event.stopPropagation();
+  console.log(event.target);
   var isBackgroundClick = currentTarget === target;
   if (isBackgroundClick || target.classList.contains("closePopup")) {
     currentTarget.remove();
@@ -5718,7 +5720,6 @@ function closePopupAfterSubmit() {
 
 function openResultPopup(result) {
   body.insertAdjacentHTML("beforeend", popupResultElement);
-  console.log(result);
   var popup = document.querySelector(".resultPopup");
   var popupTitle = popup.querySelector(".popupTitle");
   var popupText = popup.querySelector(".popupText");
@@ -5852,7 +5853,7 @@ function openFormPopup(event) {
   var popupSlot = document.querySelector(".popupContent");
   var formName = event.target.name;
   renderForm(popupSlot, formName);
-  popup.addEventListener("click", closePopup);
+  popup.addEventListener("mousedown", closePopup);
 }
 ;// CONCATENATED MODULE: ./src/index.js
 
