@@ -7,13 +7,3 @@
 @import url("./styles/components/contact/contact.css");
 @import url("./styles/components/popup/popup.css");
 @import url("./styles/components/popupButtons/popupButtons.css");
-
-.file {
-  display: none;
-}
-
-.fileLabel {
-  border: 0.5px solid #c6c6c6;
-  padding: 5px;
-  text-align: center;
-}
