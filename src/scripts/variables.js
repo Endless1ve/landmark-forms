@@ -4,6 +4,8 @@ const body = document.querySelector(".body");
 const forms = document.querySelectorAll(".form");
 const openPopupButtons = document.querySelectorAll(".openButton");
 
+const preloader = `<span class="preloader"></span>`;
+
 const popupTemplate = `
 <div class="popup">
   <div class="popupContent">
@@ -79,4 +81,5 @@ export {
   popupTemplate,
   validatePatterns,
   popupForms,
+  preloader,
 };
