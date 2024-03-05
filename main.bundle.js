@@ -355,59 +355,6 @@ module.exports = function (METHOD_NAME, argument) {
 
 /***/ }),
 
-/***/ 2396:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-
-var aCallable = __webpack_require__(1896);
-var toObject = __webpack_require__(6804);
-var IndexedObject = __webpack_require__(6212);
-var lengthOfArrayLike = __webpack_require__(9480);
-
-var $TypeError = TypeError;
-
-var REDUCE_EMPTY = 'Reduce of empty array with no initial value';
-
-// `Array.prototype.{ reduce, reduceRight }` methods implementation
-var createMethod = function (IS_RIGHT) {
-  return function (that, callbackfn, argumentsLength, memo) {
-    var O = toObject(that);
-    var self = IndexedObject(O);
-    var length = lengthOfArrayLike(O);
-    aCallable(callbackfn);
-    if (length === 0 && argumentsLength < 2) throw new $TypeError(REDUCE_EMPTY);
-    var index = IS_RIGHT ? length - 1 : 0;
-    var i = IS_RIGHT ? -1 : 1;
-    if (argumentsLength < 2) while (true) {
-      if (index in self) {
-        memo = self[index];
-        index += i;
-        break;
-      }
-      index += i;
-      if (IS_RIGHT ? index < 0 : length <= index) {
-        throw new $TypeError(REDUCE_EMPTY);
-      }
-    }
-    for (;IS_RIGHT ? index >= 0 : length > index; index += i) if (index in self) {
-      memo = callbackfn(memo, self[index], index, O);
-    }
-    return memo;
-  };
-};
-
-module.exports = {
-  // `Array.prototype.reduce` method
-  // https://tc39.es/ecma262/#sec-array.prototype.reduce
-  left: createMethod(false),
-  // `Array.prototype.reduceRight` method
-  // https://tc39.es/ecma262/#sec-array.prototype.reduceright
-  right: createMethod(true)
-};
-
-
-/***/ }),
-
 /***/ 7588:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -3991,33 +3938,6 @@ if (!IS_PURE && DESCRIPTORS && values.name !== 'values') try {
 
 /***/ }),
 
-/***/ 1732:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-
-var $ = __webpack_require__(3748);
-var $reduce = (__webpack_require__(2396).left);
-var arrayMethodIsStrict = __webpack_require__(4528);
-var CHROME_VERSION = __webpack_require__(3356);
-var IS_NODE = __webpack_require__(1648);
-
-// Chrome 80-82 has a critical bug
-// https://bugs.chromium.org/p/chromium/issues/detail?id=1049982
-var CHROME_BUG = !IS_NODE && CHROME_VERSION > 79 && CHROME_VERSION < 83;
-var FORCED = CHROME_BUG || !arrayMethodIsStrict('reduce');
-
-// `Array.prototype.reduce` method
-// https://tc39.es/ecma262/#sec-array.prototype.reduce
-$({ target: 'Array', proto: true, forced: FORCED }, {
-  reduce: function reduce(callbackfn /* , initialValue */) {
-    var length = arguments.length;
-    return $reduce(this, callbackfn, length, length > 1 ? arguments[1] : undefined);
-  }
-});
-
-
-/***/ }),
-
 /***/ 2928:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -5604,8 +5524,6 @@ var es_function_name = __webpack_require__(1408);
 function closePopup(_ref) {
   var currentTarget = _ref.currentTarget,
     target = _ref.target;
-  event.stopPropagation();
-  console.log(event.target);
   var isBackgroundClick = currentTarget === target;
   if (isBackgroundClick || target.classList.contains("closePopup")) {
     currentTarget.remove();
@@ -5621,8 +5539,6 @@ var es_symbol_iterator = __webpack_require__(6968);
 var es_array_from = __webpack_require__(9912);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
 var es_array_iterator = __webpack_require__(9120);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.reduce.js
-var es_array_reduce = __webpack_require__(1732);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
 var es_array_slice = __webpack_require__(2928);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
@@ -5650,22 +5566,18 @@ function showError(element, error) {
   errorBlock.textContent = error;
 }
 ;// CONCATENATED MODULE: ./src/images/closePopup.svg
-const images_closePopup_namespaceObject = __webpack_require__.p + "2f542b3b896e267e3e0b.svg";
+const images_closePopup_namespaceObject = __webpack_require__.p + "1320c94bf552c27b5e4c.svg";
 ;// CONCATENATED MODULE: ./src/scripts/variables.js
 
-var correctPhone = "+7 (977) 683 - 37 - 14";
 var body = document.querySelector(".body");
+var variables_forms = document.querySelectorAll(".form");
+var openPopupButtons = document.querySelectorAll(".openButton");
 var preloader = "<span class=\"preloader\"></span>";
-var popupResultElement = "\n<div class=\"popup resultPopup\">\n  <div class=\"popupContent\">\n    <img src=\"".concat(images_closePopup_namespaceObject, "\" alt=\"\" class=\"closePopup\">\n    <h2 class=\"popupTitle\"></h2>\n    <p class=\"popupText\"></p>\n  </div>\n</div>\n");
-var popupFormElement = "\n<div class=\"popup\">\n  <div class=\"popupContent\">\n    <img src=\"".concat(images_closePopup_namespaceObject, "\" alt=\"\" class=\"closePopup\">\n    <h2 class=\"popupTitle\">\u0421\u0432\u044F\u0437\u0430\u0442\u044C\u0441\u044F \u0441 \u043D\u0430\u043C\u0438</h2>\n  </div>\n</div>\n");
-var popupForms = {
-  service: "<form class=\"form popupForm\">\n          <div class=\"inputGroup\">\n          <input class=\"formInput popupInput\" type=\"text\" placeholder=\"\u0418\u041C\u042F*\" name=\"your-name\" data-required />\n          <span class=\"inputError\">\u041E\u0448\u0438\u0431\u043A\u0430</span>\n        </div>\n        <div class=\"inputGroup\">\n          <input class=\"formInput popupInput\" type=\"tel\" placeholder=\"\u0422\u0415\u041B\u0415\u0424\u041E\u041D\" name=\"your-name\" />\n          <span class=\"inputError\">\u041E\u0448\u0438\u0431\u043A\u0430</span>\n        </div>\n        <div class=\"inputGroup\">\n          <input class=\"formInput popupInput\" type=\"email\" placeholder=\"EMAIL*\" name=\"your-name\" data-required />\n          <span class=\"inputError\">\u041E\u0448\u0438\u0431\u043A\u0430</span>\n        </div>\n        <p class=\"formAcceptance popupAcceptance\">\n          \u041D\u0430\u0436\u0438\u043C\u0430\u044F \u043A\u043D\u043E\u043F\u043A\u0443 \"\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C\", \u0432\u044B \u0441\u043E\u0433\u043B\u0430\u0448\u0430\u0435\u0442\u0435\u0441\u044C \u0441\n          <strong><a class=\"acceptanceLink\" href=\"https://landmark-law.ru/users-agreement/\">\u0443\u0441\u043B\u043E\u0432\u0438\u044F\u043C\u0438 \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u043B\u044C\u043D\u044B\u0445 \u0434\u0430\u043D\u043D\u044B\u0445</a></strong>\n        </p>\n        <button class=\"formSubmit popupSubmit\">\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C</button>\n      </form>",
-  career: "<form class=\"form popupForm\">\n          <div class=\"inputGroup\">\n          <input class=\"formInput popupInput\" type=\"text\" placeholder=\"\u0418\u041C\u042F*\" name=\"your-name\" data-required />\n          <span class=\"inputError\">\u041E\u0448\u0438\u0431\u043A\u0430</span>\n        </div>\n        <div class=\"inputGroup\">\n          <input class=\"formInput popupInput\" type=\"tel\" placeholder=\"\u0422\u0415\u041B\u0415\u0424\u041E\u041D\" name=\"your-name\" />\n          <span class=\"inputError\">\u041E\u0448\u0438\u0431\u043A\u0430</span>\n        </div>\n        <div class=\"inputGroup\">\n          <input class=\"formInput popupInput\" type=\"email\" placeholder=\"EMAIL*\" name=\"your-name\" data-required />\n          <span class=\"inputError\">\u041E\u0448\u0438\u0431\u043A\u0430</span>\n        </div>\n        <div class=\"inputGroup\">\n          <label class=\"fileLabel\" for=\"file\">\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0444\u0430\u0439\u043B</label>\n          <input class=\"file\" id=\"file\" type=\"file\" accept=\".pdf\">\n        </div>\n        <p class=\"formAcceptance popupAcceptance\">\n          \u041D\u0430\u0436\u0438\u043C\u0430\u044F \u043A\u043D\u043E\u043F\u043A\u0443 \"\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C\", \u0432\u044B \u0441\u043E\u0433\u043B\u0430\u0448\u0430\u0435\u0442\u0435\u0441\u044C \u0441\n          <strong><a class=\"acceptanceLink\" href=\"https://landmark-law.ru/users-agreement/\">\u0443\u0441\u043B\u043E\u0432\u0438\u044F\u043C\u0438 \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u043B\u044C\u043D\u044B\u0445 \u0434\u0430\u043D\u043D\u044B\u0445</a></strong>\n        </p>\n        <button class=\"formSubmit popupSubmit\">\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C</button>\n      </form>"
-};
+var popupTemplate = "\n<div class=\"popup\">\n  <div class=\"popupContent\">\n    <img src=\"".concat(images_closePopup_namespaceObject, "\" alt=\"\" class=\"closePopup\">\n    <h2 class=\"popupTitle\">\u0421\u0432\u044F\u0437\u0430\u0442\u044C\u0441\u044F \u0441 \u043D\u0430\u043C\u0438</h2>\n  </div>\n</div>\n");
 var validatePatterns = {
   required: "Обязательное поле",
   phone: {
-    pattern: "^(\\+7 \\((9\\d{2})\\) \\d{3} - \\d{2} - \\d{2})$",
+    pattern: "^(\\+7 \\(([49]\\d{2})\\) \\d{3} - \\d{2} - \\d{2})$",
     message: "Некорректный номер телефона."
   },
   email: {
@@ -5673,6 +5585,11 @@ var validatePatterns = {
     message: "Некорректный email"
   }
 };
+var popupForms = {
+  service: "<form class=\"form popupForm\">\n          <div class=\"inputGroup\">\n          <input class=\"formInput popupInput\" type=\"text\" placeholder=\"\u0418\u041C\u042F*\" name=\"your-name\" data-required />\n          <span class=\"inputError\">\u041E\u0448\u0438\u0431\u043A\u0430</span>\n        </div>\n        <div class=\"inputGroup\">\n          <input class=\"formInput popupInput\" type=\"tel\" placeholder=\"\u0422\u0415\u041B\u0415\u0424\u041E\u041D\" name=\"your-name\" />\n          <span class=\"inputError\">\u041E\u0448\u0438\u0431\u043A\u0430</span>\n        </div>\n        <div class=\"inputGroup\">\n          <input class=\"formInput popupInput\" type=\"email\" placeholder=\"EMAIL*\" name=\"your-name\" data-required />\n          <span class=\"inputError\">\u041E\u0448\u0438\u0431\u043A\u0430</span>\n        </div>\n        <p class=\"formAcceptance popupAcceptance\">\n          \u041D\u0430\u0436\u0438\u043C\u0430\u044F \u043A\u043D\u043E\u043F\u043A\u0443 \"\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C\", \u0432\u044B \u0441\u043E\u0433\u043B\u0430\u0448\u0430\u0435\u0442\u0435\u0441\u044C \u0441\n          <strong><a class=\"acceptanceLink\" href=\"https://landmark-law.ru/users-agreement/\">\u0443\u0441\u043B\u043E\u0432\u0438\u044F\u043C\u0438 \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u043B\u044C\u043D\u044B\u0445 \u0434\u0430\u043D\u043D\u044B\u0445</a></strong>\n        </p>\n        <button class=\"formSubmit popupSubmit\">\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C</button>\n      </form>",
+  career: "<form class=\"form popupForm\">\n          <div class=\"inputGroup\">\n          <input class=\"formInput popupInput\" type=\"text\" placeholder=\"\u0418\u041C\u042F*\" name=\"your-name\" data-required />\n          <span class=\"inputError\">\u041E\u0448\u0438\u0431\u043A\u0430</span>\n        </div>\n        <div class=\"inputGroup\">\n          <input class=\"formInput popupInput\" type=\"tel\" placeholder=\"\u0422\u0415\u041B\u0415\u0424\u041E\u041D\" name=\"your-name\" />\n          <span class=\"inputError\">\u041E\u0448\u0438\u0431\u043A\u0430</span>\n        </div>\n        <div class=\"inputGroup\">\n          <input class=\"formInput popupInput\" type=\"email\" placeholder=\"EMAIL*\" name=\"your-name\" data-required />\n          <span class=\"inputError\">\u041E\u0448\u0438\u0431\u043A\u0430</span>\n        </div>\n        <div class=\"inputGroup\">\n          <image class=\"fileButton\" src='".concat(images_closePopup_namespaceObject, "'>\n          <label class=\"fileLabel\" for=\"file\">\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0444\u0430\u0439\u043B...</label>\n          <input class=\"fileInput\" id=\"file\" type=\"file\" accept=\".pdf\">\n        </div>\n        <p class=\"formAcceptance popupAcceptance\">\n          \u041D\u0430\u0436\u0438\u043C\u0430\u044F \u043A\u043D\u043E\u043F\u043A\u0443 \"\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C\", \u0432\u044B \u0441\u043E\u0433\u043B\u0430\u0448\u0430\u0435\u0442\u0435\u0441\u044C \u0441\n          <strong><a class=\"acceptanceLink\" href=\"https://landmark-law.ru/users-agreement/\">\u0443\u0441\u043B\u043E\u0432\u0438\u044F\u043C\u0438 \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u043B\u044C\u043D\u044B\u0445 \u0434\u0430\u043D\u043D\u044B\u0445</a></strong>\n        </p>\n        <button class=\"formSubmit popupSubmit\">\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C</button>\n      </form>")
+};
+var popupResultElement = "\n<div class=\"popup resultPopup\">\n  <div class=\"popupContent\">\n    <img src=\"".concat(images_closePopup_namespaceObject, "\" alt=\"\" class=\"closePopup\">\n    <h2 class=\"popupTitle\"></h2>\n    <p class=\"popupText\"></p>\n  </div>\n</div>\n");
 
 ;// CONCATENATED MODULE: ./src/scripts/checkInputValidity.js
 
@@ -5806,7 +5723,6 @@ function sendData(form) {
 
 
 
-
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -5815,40 +5731,70 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 
 
-function sendToValidate(form) {
+function sendToValidate() {
+  event.preventDefault();
+  var form = event.target;
   var elements = _toConsumableArray(form.elements);
   var isValid = true;
   elements.forEach(function (element) {
-    return isValid = checkInputValidity(element) && isValid;
+    isValid = checkInputValidity(element) && isValid;
   });
   if (isValid) {
     sendData(form);
   } else {
     form.addEventListener("input", function () {
-      isValid = elements.reduce(function (acc, elem) {
-        return checkInputValidity(elem) && acc;
-      }, true);
+      elements.forEach(function (element) {
+        isValid = checkInputValidity(element) && isValid;
+      });
     });
   }
 }
+;// CONCATENATED MODULE: ./src/scripts/setFile.js
+
+
+function setFile() {
+  var fileInput = document.querySelector(".fileInput");
+  var fileLabel = document.querySelector(".fileLabel");
+  var fileClearButton = document.querySelector(".fileButton");
+  var files = event.target.files;
+  console;
+  if (files.length > 0) {
+    var fileName = event.target.files[0].name;
+    var name = fileName.slice(0, -4);
+    var resolution = fileName.slice(-4);
+    if (name.length > 20) {
+      name = name.slice(0, 20) + "...";
+      fileName = name + resolution;
+    }
+    fileLabel.textContent = fileName;
+  } else {
+    fileLabel.textContent = "Выберите файл...";
+  }
+  fileClearButton.addEventListener("click", function () {
+    fileInput.value = null;
+    fileLabel.textContent = "Выберите файл...";
+  });
+}
 ;// CONCATENATED MODULE: ./src/scripts/renderForm.js
+
 
 
 function renderForm(popupSlot, formName) {
   popupSlot.insertAdjacentHTML("beforeend", popupForms[formName]);
   var popupForm = document.querySelector(".popupForm");
-  popupForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    sendToValidate(popupForm);
-  });
+  var fileElem = popupForm.querySelector(".fileInput");
+  popupForm.addEventListener("submit", sendToValidate);
+  if (fileElem) {
+    fileElem.addEventListener("change", setFile);
+  }
 }
 ;// CONCATENATED MODULE: ./src/scripts/openFormPopup.js
 
 
 
 
-function openFormPopup(event) {
-  body.insertAdjacentHTML("beforeend", popupFormElement);
+function openFormPopup() {
+  body.insertAdjacentHTML("beforeend", popupTemplate);
   var popup = document.querySelector(".popup");
   var popupSlot = document.querySelector(".popupContent");
   var formName = event.target.name;
@@ -5861,16 +5807,12 @@ function openFormPopup(event) {
 
 
 
-var src_forms = document.querySelectorAll(".form");
-var openPopupButtons = document.querySelectorAll(".openButton");
+
 openPopupButtons.forEach(function (button) {
   button.addEventListener("click", openFormPopup);
 });
-src_forms.forEach(function (form) {
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    sendToValidate(form);
-  });
+variables_forms.forEach(function (form) {
+  form.addEventListener("submit", sendToValidate);
 });
 })();
 
