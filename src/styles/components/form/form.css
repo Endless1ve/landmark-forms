@@ -1,0 +1,10 @@
+@import url("./inputGroup/inputGroup.css");
+@import url("./formAcceptance/formAcceptance.css");
+@import url("./formSubmit/formSubmit.css");
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}

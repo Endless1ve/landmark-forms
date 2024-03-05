@@ -1,0 +1,12 @@
+.feedbackSubmit {
+  margin-top: 10px;
+  background-color: transparent;
+  border: 0.1px solid var(--global--color-sheme-white);
+  color: var(--global--color-sheme-white);
+}
+
+@media screen and (min-width: 980px) {
+  .feedbackSubmit {
+    margin-top: 0;
+  }
+}

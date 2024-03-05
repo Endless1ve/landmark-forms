@@ -1,0 +1,27 @@
+@import url("./feedbackLink/feedbackLink.css");
+
+.feedbackAcceptance {
+  text-align: justify;
+  max-width: 390px;
+  min-width: 126px;
+}
+
+.feedbackAcceptance-desktop {
+  display: none;
+}
+
+@media screen and (min-width: 980px) {
+  .feedbackAcceptance-desktop {
+    display: block;
+    width: 100%;
+    max-width: 546px;
+  }
+
+  .feedbackAcceptance-mobile {
+    display: none;
+  }
+
+  .feedbackSubmit {
+    margin-top: 0;
+  }
+}

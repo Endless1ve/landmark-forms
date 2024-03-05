@@ -1,0 +1,14 @@
+@import url("./inputError/inputError.css");
+
+.formInput {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  font-family: var(--global--font-secondary);
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  outline: none;
+  border-bottom: 0.1px solid var(--global--color-sheme-red);
+}

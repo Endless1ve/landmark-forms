@@ -1,0 +1,21 @@
+@import url("./feedbackTexts/feedbackTexts.css");
+@import url("./feedbackForm/feedbackForm.css");
+
+.feedback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--global--color-sheme-red);
+  color: var(--global--color-sheme-white);
+  padding: 1rem;
+  justify-content: space-evenly;
+}
+
+@media screen and (min-width: 980px) {
+  .feedback {
+    flex-direction: row;
+    align-items: start;
+    gap: 10px;
+    padding: 3rem 4rem;
+  }
+}

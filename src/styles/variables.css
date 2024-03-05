@@ -1,6 +1,9 @@
 :root {
   --global--color-sheme-red: #d90000;
   --global--color-sheme-white: #fff;
+  --global--color-sheme-black: rgb(0, 0, 0);
+  --global--color-sheme-black-70: rgba(0, 0, 0, 0.7);
+  --global--color-black-30: rgba(0, 0, 0, 0.3);
   --font-headings: Murecho;
   --font-base: Roboto;
   --global--font-primary: var(
