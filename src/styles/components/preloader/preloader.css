@@ -18,3 +18,10 @@
   border-bottom-color: transparent;
   animation: rotation 1s linear infinite;
 }
+
+@media (hover: hover) {
+  .formSubmit:hover .preloader {
+    border: var(--global--color-sheme-red) 2px solid;
+    border-bottom-color: #fff;
+  }
+}
