@@ -5,3 +5,9 @@
   z-index: 2;
   cursor: pointer;
 }
+
+@media screen and (max-width: 425px) {
+  .fileButton {
+    right: 5px;
+  }
+}
