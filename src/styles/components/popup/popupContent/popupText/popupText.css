@@ -1,0 +1,9 @@
+.popupText {
+  font-family: var(--global--font-primary);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  text-align: center;
+  color: var(--global--color-sheme-black);
+  width: 90%;
+}
