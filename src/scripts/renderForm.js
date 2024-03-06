@@ -9,6 +9,7 @@ export default function renderForm(popupSlot, formName) {
   const fileElem = popupForm.querySelector(".fileInput");
 
   popupForm.addEventListener("submit", sendToValidate);
+
   if (fileElem) {
     fileElem.addEventListener("change", setFile);
   }

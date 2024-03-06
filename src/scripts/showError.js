@@ -1,5 +1,6 @@
 export default function showError(element, error) {
-  const errorBlock = element.nextElementSibling;
+  const parentElem = element.parentElement;
+  const errorBlock = parentElem.querySelector(".inputError");
   errorBlock.style.visibility = "visible";
   errorBlock.textContent = error;
 }

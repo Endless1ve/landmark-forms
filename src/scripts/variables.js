@@ -26,6 +26,9 @@ const validatePatterns = {
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/,
     message: "Некорректный email",
   },
+  file: {
+    message: "Только pdf файлы",
+  },
 };
 
 const popupForms = {
@@ -65,6 +68,7 @@ const popupForms = {
           <image class="fileButton" src='${closePopupImage}'>
           <label class="fileLabel" for="file">Выберите файл...</label>
           <input class="fileInput" id="file" type="file" accept=".pdf" name="your-file">
+          <span class="inputError">Ошибка</span>
         </div>
         <p class="formAcceptance popupAcceptance">
           Нажимая кнопку "Отправить", вы соглашаетесь с

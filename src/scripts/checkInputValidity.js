@@ -28,6 +28,11 @@ export default function checkInputValidity(element) {
     showError(element, validatePatterns.email.message);
     return false;
   }
+  if (element.type === "file" && !element.value.includes(".pdf")) {
+    showError(element, validatePatterns.file.message);
+    element.value = null;
+    return false;
+  }
   deleteError(element);
   return true;
 }

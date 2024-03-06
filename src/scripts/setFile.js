@@ -1,19 +1,17 @@
-export default function setFile() {
-  const fileInput = document.querySelector(".fileInput");
-  const fileLabel = document.querySelector(".fileLabel");
-  const fileClearButton = document.querySelector(".fileButton");
-  const files = event.target.files;
-  console;
-  if (files.length > 0) {
-    let fileName = event.target.files[0].name;
-    let name = fileName.slice(0, -4);
-    const resolution = fileName.slice(-4);
+import changeName from "./changeName";
+import checkInputValidity from "./checkInputValidity";
 
-    if (name.length > 20) {
-      name = name.slice(0, 20) + "...";
-      fileName = name + resolution;
+export default function setFile(event) {
+  const fileInput = event.target;
+  const files = fileInput.files;
+  const parentElem = fileInput.parentElement;
+  const fileLabel = parentElem.querySelector(".fileLabel");
+  const fileClearButton = parentElem.querySelector(".fileButton");
+
+  if (files.length != 0) {
+    if (checkInputValidity(fileInput)) {
+      changeName(parentElem, fileInput);
     }
-    fileLabel.textContent = fileName;
   } else {
     fileLabel.textContent = "Выберите файл...";
   }
