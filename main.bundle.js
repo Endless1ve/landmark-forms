@@ -5052,6 +5052,45 @@ defineIterator(String, 'String', function (iterated) {
 
 /***/ }),
 
+/***/ 8392:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+
+var $ = __webpack_require__(3748);
+var uncurryThis = __webpack_require__(8168);
+var getOwnPropertyDescriptor = (__webpack_require__(4560).f);
+var toLength = __webpack_require__(960);
+var toString = __webpack_require__(1992);
+var notARegExp = __webpack_require__(836);
+var requireObjectCoercible = __webpack_require__(2696);
+var correctIsRegExpLogic = __webpack_require__(4312);
+var IS_PURE = __webpack_require__(2804);
+
+var stringSlice = uncurryThis(''.slice);
+var min = Math.min;
+
+var CORRECT_IS_REGEXP_LOGIC = correctIsRegExpLogic('startsWith');
+// https://github.com/zloirock/core-js/pull/702
+var MDN_POLYFILL_BUG = !IS_PURE && !CORRECT_IS_REGEXP_LOGIC && !!function () {
+  var descriptor = getOwnPropertyDescriptor(String.prototype, 'startsWith');
+  return descriptor && !descriptor.writable;
+}();
+
+// `String.prototype.startsWith` method
+// https://tc39.es/ecma262/#sec-string.prototype.startswith
+$({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG && !CORRECT_IS_REGEXP_LOGIC }, {
+  startsWith: function startsWith(searchString /* , position = 0 */) {
+    var that = toString(requireObjectCoercible(this));
+    notARegExp(searchString);
+    var index = toLength(min(arguments.length > 1 ? arguments[1] : undefined, that.length));
+    var search = toString(searchString);
+    return stringSlice(that, index, index + search.length) === search;
+  }
+});
+
+
+/***/ }),
+
 /***/ 692:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -5615,6 +5654,14 @@ var __webpack_exports__ = {};
 var es_object_to_string = __webpack_require__(9640);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
 var web_dom_collections_for_each = __webpack_require__(2984);
+;// CONCATENATED MODULE: ./src/scripts/addPhoneStart.js
+function addPhoneStart(event) {
+  if (event.target.value.length === 0) event.target.value = "+7";
+}
+;// CONCATENATED MODULE: ./src/scripts/deletePhoneStart.js
+function deletePhoneStart(event) {
+  if (event.target.value.length < 3) event.target.value = "";
+}
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__(1408);
 ;// CONCATENATED MODULE: ./src/scripts/closePopup.js
@@ -5652,6 +5699,8 @@ var es_array_includes = __webpack_require__(2452);
 var es_regexp_constructor = __webpack_require__(2632);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
 var es_string_includes = __webpack_require__(500);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.starts-with.js
+var es_string_starts_with = __webpack_require__(8392);
 ;// CONCATENATED MODULE: ./src/scripts/deleteError.js
 function deleteError(element) {
   var errorBlock = element.nextElementSibling;
@@ -5705,6 +5754,7 @@ var popupResultElement = "\n<div class=\"popup resultPopup\">\n  <div class=\"po
 
 
 
+
 function checkInputValidity(element) {
   if (element.tagName !== "INPUT" && element.tagName !== "TEXTAREA") {
     return true;
@@ -5717,9 +5767,21 @@ function checkInputValidity(element) {
     deleteError(element);
     return true;
   }
-  if (element.type === "tel" && !RegExp(validatePatterns.phone.pattern).test(element.value)) {
+  if (element.type === "tel" && !(element.value.startsWith("+7") || element.value.startsWith("8"))) {
     showError(element, validatePatterns.phone.message);
     return false;
+  }
+  if (element.type === "tel" && element.value.startsWith("+7")) {
+    if (element.value.length != 12) {
+      showError(element, validatePatterns.phone.message);
+      return false;
+    }
+  }
+  if (element.type === "tel" && element.value.startsWith("8")) {
+    if (element.value.length != 11) {
+      showError(element, validatePatterns.phone.message);
+      return false;
+    }
   }
   if (element.type === "email" && !RegExp(validatePatterns.email.pattern).test(element.value)) {
     showError(element, validatePatterns.email.message);
@@ -5843,7 +5905,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 
 
-function sendToValidate() {
+function sendToValidate(event) {
   event.preventDefault();
   var form = event.target;
   var elements = _toConsumableArray(form.elements);
@@ -5869,8 +5931,8 @@ function changeName(parentElem, inputElem) {
   var fileValue = inputElem.files[0].name;
   var name = fileValue.slice(0, -4);
   var resolution = fileValue.slice(-4);
-  if (name.length > 20) {
-    name = name.slice(0, 20) + "...";
+  if (name.length > 15) {
+    name = name.slice(0, 15) + "...";
     fileValue = name + resolution;
   }
   fileLabel.textContent = fileValue;
@@ -5900,14 +5962,23 @@ function setFile(event) {
 
 
 
+
+
+
+
 function renderForm(popupSlot, formName) {
   popupSlot.insertAdjacentHTML("beforeend", popupForms[formName]);
   var popupForm = document.querySelector(".popupForm");
   var fileElem = popupForm.querySelector(".fileInput");
+  var phoneInputs = document.querySelectorAll('input[type="tel"]');
   popupForm.addEventListener("submit", sendToValidate);
   if (fileElem) {
     fileElem.addEventListener("change", setFile);
   }
+  phoneInputs.forEach(function (phone) {
+    phone.addEventListener("focus", addPhoneStart);
+    phone.addEventListener("blur", deletePhoneStart);
+  });
 }
 ;// CONCATENATED MODULE: ./src/scripts/openFormPopup.js
 
@@ -5929,11 +6000,18 @@ function openFormPopup() {
 
 
 
+
+
 openPopupButtons.forEach(function (button) {
   button.addEventListener("click", openFormPopup);
 });
 variables_forms.forEach(function (form) {
   form.addEventListener("submit", sendToValidate);
+});
+var phoneInputs = document.querySelectorAll('input[type="tel"]');
+phoneInputs.forEach(function (phone) {
+  phone.addEventListener("focus", addPhoneStart);
+  phone.addEventListener("blur", deletePhoneStart);
 });
 })();
 
