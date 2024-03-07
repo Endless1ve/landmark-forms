@@ -1,7 +1,7 @@
 import checkInputValidity from "./checkInputValidity";
 import sendData from "./sendData";
 
-export default function sendToValidate() {
+export default function sendToValidate(event) {
   event.preventDefault();
   const form = event.target;
   const elements = [...form.elements];

@@ -16,10 +16,22 @@ export default function checkInputValidity(element) {
   }
   if (
     element.type === "tel" &&
-    !RegExp(validatePatterns.phone.pattern).test(element.value)
+    !(element.value.startsWith("+7") || element.value.startsWith("8"))
   ) {
     showError(element, validatePatterns.phone.message);
     return false;
+  }
+  if (element.type === "tel" && element.value.startsWith("+7")) {
+    if (element.value.length != 12) {
+      showError(element, validatePatterns.phone.message);
+      return false;
+    }
+  }
+  if (element.type === "tel" && element.value.startsWith("8")) {
+    if (element.value.length != 11) {
+      showError(element, validatePatterns.phone.message);
+      return false;
+    }
   }
   if (
     element.type === "email" &&
