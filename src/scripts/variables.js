@@ -40,15 +40,21 @@ const popupForms = {
   service: `<form class="form popupForm">
           <div class="inputGroup">
           <input class="formInput popupInput" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё-]/g, '')"/>
-          <span class="inputError">Ошибка</span>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <div class="inputGroup">
           <input class="formInput popupInput" type="tel" placeholder="ТЕЛЕФОН" name="your-tel" />
-          <span class="inputError">Ошибка</span>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <div class="inputGroup">
           <input class="formInput popupInput" type="email" placeholder="EMAIL*" name="your-email" data-required />
-          <span class="inputError">Ошибка</span>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <p class="formAcceptance popupAcceptance">
           Нажимая кнопку "Отправить", вы соглашаетесь с
@@ -59,21 +65,29 @@ const popupForms = {
   career: `<form class="form popupForm">
           <div class="inputGroup">
           <input class="formInput popupInput" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё-]/g, '')"/>
-          <span class="inputError">Ошибка</span>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <div class="inputGroup">
           <input class="formInput popupInput" type="tel" placeholder="ТЕЛЕФОН" name="your-tel" />
-          <span class="inputError">Ошибка</span>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <div class="inputGroup">
           <input class="formInput popupInput" type="email" placeholder="EMAIL*" name="your-email" data-required />
-          <span class="inputError">Ошибка</span>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <div class="inputGroup">
           <image class="fileButton" src='${closePopupImage}'>
           <label class="fileLabel" for="file">Выберите файл...</label>
           <input class="fileInput" id="file" type="file" accept=".pdf" name="your-file">
-          <span class="inputError">Ошибка</span>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <p class="formAcceptance popupAcceptance">
           Нажимая кнопку "Отправить", вы соглашаетесь с

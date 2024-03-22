@@ -1,7 +1,5 @@
 export default function deleteError(element) {
-  const errorBlock = element.nextElementSibling;
-  if (errorBlock) {
-    errorBlock.style.visibility = "hidden";
-    errorBlock.textContent = "Ошибка";
-  }
+  const parentElem = element.parentElement;
+  const errorBlock = parentElem.querySelector(".errorBlock");
+  errorBlock.style.display = "none";
 }

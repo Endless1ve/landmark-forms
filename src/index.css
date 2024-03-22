@@ -2,6 +2,7 @@
 @import url("./fonts/fonts.css");
 @import url("./styles/variables.css");
 @import url("./styles/components/form/form.css");
+@import url("./styles/components/errorBlock/errorBlock.css");
 @import url("./styles/components/preloader/preloader.css");
 @import url("./styles/components/feedback/feedback.css");
 @import url("./styles/components/contact/contact.css");

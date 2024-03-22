@@ -11,4 +11,5 @@
   top: 0;
   left: 0;
   background-color: var(--global--color-sheme-black-70);
+  z-index: 15;
 }
