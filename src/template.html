@@ -21,12 +21,16 @@
         <div class="feedbackContent">
         <div class="feedbackInputs">
           <div class="inputGroup feedbackGroup">
-            <input class="formInput feedbackInput" autocomplete="on" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё -]/g, '')"/>
-            <span class="inputError">Ошибка</span>
+            <input class="formInput feedbackInput" autocomplete="on" type="text" placeholder="ИМЯ*" name="your-name" oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё -]/g, '')"/>
+            <div class="errorBlock">
+              <span class="errorText"></span>
+            </div>
           </div>
           <div class="inputGroup feedbackGroup"> 
-            <input class="formInput feedbackInput" type="tel" placeholder="ТЕЛЕФОН*" name="your-tel" data-required oninput="this.value = this.value.replace(/[^\+0-9]/g, '')"/>
-            <span class="inputError">Ошибка</span>
+            <input class="formInput feedbackInput" type="tel" placeholder="ТЕЛЕФОН*" name="your-tel" data-required oninput="this.value = this.value.replace(/[^\+0-9]/g, '')" />
+            <div class="errorBlock">
+              <span class="errorText"></span>
+            </div>
           </div>
         </div>
         <p class="formAcceptance feedbackAcceptance feedbackAcceptance-mobile">
@@ -47,19 +51,27 @@
       <form class="form contactForm">
         <div class="inputGroup">
           <input class="formInput contactInput" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё -]/g, '')"/>
-          <span class="inputError">Ошибка</span>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <div class="inputGroup">
           <input class="formInput contactInput" type="tel" placeholder="ТЕЛЕФОН" name="your-tel" oninput="this.value = this.value.replace(/[^\+0-9]/g, '')"/>
-          <span class="inputError">Ошибка</span>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <div class="inputGroup">
           <input class="formInput contactInput" type="email" placeholder="EMAIL*" name="your-email" data-required />
-          <span class="inputError">Ошибка</span>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <div class="inputGroup">
           <textarea  class="formInput contactInput" type="text" placeholder="СООБЩЕНИЕ..." name="your-data"></textarea>
-          <span class="inputError">Ошибка</span>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <p class="formAcceptance ">
           Нажимая кнопку "Отправить", вы соглашаетесь с

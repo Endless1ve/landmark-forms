@@ -17,14 +17,19 @@ const popupTemplate = `
 
 const validatePatterns = {
   required: "Обязательное поле",
+  name: {
+    pattern: /^[a-zA-Zа-яА-ЯЁё\s'-]*[a-zA-Zа-яА-ЯЁё]+[a-zA-Zа-яА-ЯЁё\s'-]*$/,
+    message: "Введите корректное имя",
+  },
   phone: {
-    pattern: "^(\\+7 \\(([49]\\d{2})\\) \\d{3} - \\d{2} - \\d{2})$",
-    message: "Некорректный номер телефона.",
+    plusPattern: /^\+7\d{10}$/,
+    pattern: /^8\d{10}$/,
+    message: "Укажите номер в формате +79999999999 или 89999999999",
   },
   email: {
     pattern:
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/,
-    message: "Некорректный email",
+    message: "Ваш email должен выглядеть примерно как info@landmark-law.ru",
   },
   file: {
     message: "Только pdf файлы",
@@ -34,16 +39,22 @@ const validatePatterns = {
 const popupForms = {
   service: `<form class="form popupForm">
           <div class="inputGroup">
-          <input class="formInput popupInput" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё -]/g, '')"/>
-          <span class="inputError">Ошибка</span>
+          <input class="formInput popupInput" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё-]/g, '')"/>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <div class="inputGroup">
-          <input class="formInput popupInput" type="tel" placeholder="ТЕЛЕФОН" name="your-tel" oninput="this.value = this.value.replace(/[^\+0-9]/g, '')"/>
-          <span class="inputError">Ошибка</span>
+          <input class="formInput popupInput" type="tel" placeholder="ТЕЛЕФОН" name="your-tel" />
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <div class="inputGroup">
           <input class="formInput popupInput" type="email" placeholder="EMAIL*" name="your-email" data-required />
-          <span class="inputError">Ошибка</span>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <p class="formAcceptance popupAcceptance">
           Нажимая кнопку "Отправить", вы соглашаетесь с
@@ -53,22 +64,30 @@ const popupForms = {
       </form>`,
   career: `<form class="form popupForm">
           <div class="inputGroup">
-          <input class="formInput popupInput" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё -]/g, '')"/>
-          <span class="inputError">Ошибка</span>
+          <input class="formInput popupInput" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё-]/g, '')"/>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <div class="inputGroup">
-          <input class="formInput popupInput" type="tel" placeholder="ТЕЛЕФОН" name="your-tel" oninput="this.value = this.value.replace(/[^\+0-9]/g, '')"/>
-          <span class="inputError">Ошибка</span>
+          <input class="formInput popupInput" type="tel" placeholder="ТЕЛЕФОН" name="your-tel" />
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <div class="inputGroup">
           <input class="formInput popupInput" type="email" placeholder="EMAIL*" name="your-email" data-required />
-          <span class="inputError">Ошибка</span>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <div class="inputGroup">
           <image class="fileButton" src='${closePopupImage}'>
           <label class="fileLabel" for="file">Выберите файл...</label>
           <input class="fileInput" id="file" type="file" accept=".pdf" name="your-file">
-          <span class="inputError">Ошибка</span>
+          <div class="errorBlock">
+            <span class="errorText"></span>
+          </div>
         </div>
         <p class="formAcceptance popupAcceptance">
           Нажимая кнопку "Отправить", вы соглашаетесь с
