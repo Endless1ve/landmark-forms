@@ -21,11 +21,11 @@
         <div class="feedbackContent">
         <div class="feedbackInputs">
           <div class="inputGroup feedbackGroup">
-            <input class="formInput feedbackInput" type="text" placeholder="ИМЯ*" name="your-name" data-required />
+            <input class="formInput feedbackInput" autocomplete="on" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё-]/g, '')"/>
             <span class="inputError">Ошибка</span>
           </div>
           <div class="inputGroup feedbackGroup"> 
-            <input class="formInput feedbackInput" type="tel" placeholder="ТЕЛЕФОН*" name="your-name" data-required />
+            <input class="formInput feedbackInput" type="tel" placeholder="ТЕЛЕФОН*" name="your-tel" data-required />
             <span class="inputError">Ошибка</span>
           </div>
         </div>
@@ -46,19 +46,19 @@
       <h2 class="contactTitle">Напишите нам</h2>
       <form class="form contactForm">
         <div class="inputGroup">
-          <input class="formInput contactInput" type="text" placeholder="ИМЯ*" name="your-name" data-required />
+          <input class="formInput contactInput" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё-]/g, '')"/>
           <span class="inputError">Ошибка</span>
         </div>
         <div class="inputGroup">
-          <input class="formInput contactInput" type="text" placeholder="ТЕЛЕФОН" name="your-name" />
+          <input class="formInput contactInput" type="tel" placeholder="ТЕЛЕФОН" name="your-tel" />
           <span class="inputError">Ошибка</span>
         </div>
         <div class="inputGroup">
-          <input class="formInput contactInput" type="text" placeholder="EMAIL*" name="your-name" data-required />
+          <input class="formInput contactInput" type="email" placeholder="EMAIL*" name="your-email" data-required />
           <span class="inputError">Ошибка</span>
         </div>
         <div class="inputGroup">
-          <textarea  class="formInput contactInput" type="text" placeholder="СООБЩЕНИЕ..." name="your-name"></textarea>
+          <textarea  class="formInput contactInput" type="text" placeholder="СООБЩЕНИЕ..." name="your-data"></textarea>
           <span class="inputError">Ошибка</span>
         </div>
         <p class="formAcceptance ">
