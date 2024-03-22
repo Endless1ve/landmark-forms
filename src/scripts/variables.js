@@ -34,11 +34,11 @@ const validatePatterns = {
 const popupForms = {
   service: `<form class="form popupForm">
           <div class="inputGroup">
-          <input class="formInput popupInput" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё-]/g, '')"/>
+          <input class="formInput popupInput" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё -]/g, '')"/>
           <span class="inputError">Ошибка</span>
         </div>
         <div class="inputGroup">
-          <input class="formInput popupInput" type="tel" placeholder="ТЕЛЕФОН" name="your-tel" />
+          <input class="formInput popupInput" type="tel" placeholder="ТЕЛЕФОН" name="your-tel" oninput="this.value = this.value.replace(/[^\+0-9]/g, '')"/>
           <span class="inputError">Ошибка</span>
         </div>
         <div class="inputGroup">
@@ -53,11 +53,11 @@ const popupForms = {
       </form>`,
   career: `<form class="form popupForm">
           <div class="inputGroup">
-          <input class="formInput popupInput" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё-]/g, '')"/>
+          <input class="formInput popupInput" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё -]/g, '')"/>
           <span class="inputError">Ошибка</span>
         </div>
         <div class="inputGroup">
-          <input class="formInput popupInput" type="tel" placeholder="ТЕЛЕФОН" name="your-tel" />
+          <input class="formInput popupInput" type="tel" placeholder="ТЕЛЕФОН" name="your-tel" oninput="this.value = this.value.replace(/[^\+0-9]/g, '')"/>
           <span class="inputError">Ошибка</span>
         </div>
         <div class="inputGroup">
