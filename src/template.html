@@ -21,13 +21,13 @@
         <div class="feedbackContent">
         <div class="feedbackInputs">
           <div class="inputGroup feedbackGroup">
-            <input class="formInput feedbackInput" autocomplete="on" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё-]/g, '')"/>
+            <input class="formInput feedbackInput" autocomplete="on" type="text" placeholder="ИМЯ*" name="your-name" oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё -]/g, '')"/>
             <div class="errorBlock">
               <span class="errorText"></span>
             </div>
           </div>
           <div class="inputGroup feedbackGroup"> 
-            <input class="formInput feedbackInput" type="tel" placeholder="ТЕЛЕФОН*" name="your-tel" data-required />
+            <input class="formInput feedbackInput" type="tel" placeholder="ТЕЛЕФОН*" name="your-tel" data-required oninput="this.value = this.value.replace(/[^\+0-9]/g, '')" />
             <div class="errorBlock">
               <span class="errorText"></span>
             </div>
@@ -50,13 +50,13 @@
       <h2 class="contactTitle">Напишите нам</h2>
       <form class="form contactForm">
         <div class="inputGroup">
-          <input class="formInput contactInput" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё-]/g, '')"/>
+          <input class="formInput contactInput" type="text" placeholder="ИМЯ*" name="your-name" data-required oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯЁё -]/g, '')"/>
           <div class="errorBlock">
             <span class="errorText"></span>
           </div>
         </div>
         <div class="inputGroup">
-          <input class="formInput contactInput" type="tel" placeholder="ТЕЛЕФОН" name="your-tel" />
+          <input class="formInput contactInput" type="tel" placeholder="ТЕЛЕФОН" name="your-tel" oninput="this.value = this.value.replace(/[^\+0-9]/g, '')"/>
           <div class="errorBlock">
             <span class="errorText"></span>
           </div>
