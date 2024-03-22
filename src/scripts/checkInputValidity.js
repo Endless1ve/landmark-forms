@@ -21,14 +21,23 @@ export default function checkInputValidity(element) {
     showError(element, validatePatterns.phone.message);
     return false;
   }
+  if (
+    element.name === "your-name" &&
+    !RegExp(validatePatterns.name.pattern).test(element.value)
+  ) {
+    showError(element, validatePatterns.name.message);
+    return false;
+  }
   if (element.type === "tel" && element.value.startsWith("+7")) {
-    if (element.value.length != 12) {
+    element.setAttribute("maxLength", 12);
+    if (!RegExp(validatePatterns.phone.plusPattern).test(element.value)) {
       showError(element, validatePatterns.phone.message);
       return false;
     }
   }
   if (element.type === "tel" && element.value.startsWith("8")) {
-    if (element.value.length != 11) {
+    element.setAttribute("maxLength", 11);
+    if (!RegExp(validatePatterns.phone.pattern).test(element.value)) {
       showError(element, validatePatterns.phone.message);
       return false;
     }
