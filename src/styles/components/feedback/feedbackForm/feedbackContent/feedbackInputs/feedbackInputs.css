@@ -1,0 +1,17 @@
+@import url("./feedbackGroup/feedbackGroup.css");
+
+.feedbackInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+  width: 100%;
+  max-width: 390px;
+}
+
+@media screen and (min-width: 980px) {
+  .feedbackInputs {
+    flex-direction: row;
+    gap: 10px;
+    max-width: none;
+  }
+}

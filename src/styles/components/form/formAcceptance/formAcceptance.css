@@ -1,0 +1,6 @@
+@import url("./acceptanceLink/acceptanceLink.css");
+
+.formAcceptance {
+  font-family: var(--global--font-secondary);
+  font-size: 1rem;
+}

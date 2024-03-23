@@ -1,0 +1,7 @@
+.feedbackTitle {
+  font-family: var(--global--font-secondary);
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+}

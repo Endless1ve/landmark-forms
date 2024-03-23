@@ -1,0 +1,16 @@
+@import url("./popupTitle/popupTitle.css");
+@import url("./popupText/popupText.css");
+@import url("./popupForm/popupForm.css");
+@import url("./closePopup/closePopup.css");
+
+.popupContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 400px;
+  padding: 1em 1em;
+  background-color: var(--global--color-sheme-white);
+  border-radius: 2px;
+}

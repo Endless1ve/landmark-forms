@@ -1,0 +1,15 @@
+@import url("./popupContent/popupContent.css");
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--global--color-sheme-black-70);
+  z-index: 15;
+}

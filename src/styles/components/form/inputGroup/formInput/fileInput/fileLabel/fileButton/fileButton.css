@@ -1,0 +1,13 @@
+.fileButton {
+  position: absolute;
+  right: 30px;
+  top: 7px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 425px) {
+  .fileButton {
+    right: 5px;
+  }
+}

@@ -1,0 +1,14 @@
+@import url("./feedbackTitle/feedbackTitle.css");
+@import url("./feedbackSubtitle/feedbackSubtitle.css");
+
+.feedbackTexts {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 980px) {
+  .feedbackTexts {
+    text-align: left;
+    margin-bottom: 0;
+  }
+}

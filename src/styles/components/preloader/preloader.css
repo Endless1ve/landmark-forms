@@ -1,0 +1,27 @@
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.preloader {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  border-bottom-color: transparent;
+  animation: rotation 1s linear infinite;
+}
+
+@media (hover: hover) {
+  .formSubmit:hover .preloader {
+    border: var(--global--color-sheme-red) 2px solid;
+    border-bottom-color: #fff;
+  }
+}

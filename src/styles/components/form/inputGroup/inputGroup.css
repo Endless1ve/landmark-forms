@@ -1,0 +1,9 @@
+@import url("./formInput/formInput.css");
+
+.inputGroup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}

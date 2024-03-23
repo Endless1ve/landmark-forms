@@ -1,0 +1,20 @@
+.openButton {
+  border: none;
+  box-shadow: 1px 1px 2px var(--global--color-black-30);
+  font-family: var(--global--font-primary);
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 20px;
+  padding: 0.6em calc(1.333em + 2px);
+  cursor: pointer;
+  background-color: var(--global--color-sheme-red);
+  color: var(--global--color-sheme-white);
+  border: 0.1px solid var(--global--color-sheme-red);
+}
+
+@media (hover: hover) {
+  .openButton:hover {
+    background-color: var(--global--color-sheme-white);
+    color: var(--global--color-sheme-red);
+  }
+}
